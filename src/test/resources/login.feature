@@ -1,6 +1,17 @@
+@login
 Feature: Login
 
-  Scenario: Login using valid email
+  @valid-login
+  Scenario: Login using valid email and password
     Given user is on login page
+    And user input username with "standard_user"
+    And user input password with "secret_sauce"
     When user click login button
-    Then user will be on homepage
+    Then user is on homepage
+
+  @invalid-login
+  Scenario: Login using invalid email and password
+    Given user is on login page
+    And user input username with "standard_user"
+    And user input password with "invalid"
+    When user click login button
