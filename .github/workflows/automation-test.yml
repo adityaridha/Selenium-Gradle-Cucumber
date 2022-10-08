@@ -14,7 +14,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  selenium-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,6 +42,14 @@ jobs:
         name: Cucumber Report
         path: reports
 
+
+  deploy-test-result:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download all workflow run artifacts
+      uses: actions/download-artifact@v3
+      
     - name: Deploy report to Github Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v3.7.3
