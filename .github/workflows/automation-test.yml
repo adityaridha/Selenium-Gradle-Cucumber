@@ -45,6 +45,7 @@ jobs:
 
   deploy-test-result:
     runs-on: ubuntu-latest
+    needs: selenium-test
 
     steps:
     - name: Download all workflow run artifacts
