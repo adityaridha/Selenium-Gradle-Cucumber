@@ -40,7 +40,7 @@ task cucumber() {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
             args = [
-                    '--plugin', 'html:reports/test-report.html',
+                    '--plugin', 'html:reports/index.html',
                     '--plugin', 'pretty',
                     '--glue', 'com.aditya',
                     '--tags', "${tags}",
