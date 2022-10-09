@@ -1,6 +1,6 @@
 package com.aditya.stepdef;
 
-
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,26 +10,26 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginStepDef {
 
-    protected static WebDriver driver;
+  WebDriver driver;
 
-  @Before()
+  @Before
   public void beforeTest() {
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--headless");
-    WebDriverManager.chromedriver().setup();
-    driver = new ChromeDriver(options);
+    driver = WebDriverManager.chromedriver().create();
+  }
+
+  @After
+  public void AfterTest() {
+    driver.close();
   }
 
   @Given("user is on login page")
-  public void userIsOnLoginPage() throws InterruptedException {
+  public void userIsOnLoginPage() {
     driver.get("https://www.saucedemo.com/");
   }
 
@@ -50,9 +50,6 @@ public class LoginStepDef {
     By loginButton = By.id("login-button");
     driver.findElement(loginButton).click();
   }
-
-  @And("user see error message")
-  public void userSeeErrorMessage() {}
 
   @Then("user is on homepage")
   public void userIsOnHomepage() {
