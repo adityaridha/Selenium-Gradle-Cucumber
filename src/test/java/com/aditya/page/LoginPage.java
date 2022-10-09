@@ -3,6 +3,8 @@ package com.aditya.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class LoginPage {
   WebDriver driver;
 
@@ -12,6 +14,10 @@ public class LoginPage {
 
   public LoginPage(WebDriver driver) {
     this.driver = driver;
+  }
+
+  public void goToLoginPage() {
+    driver.get("https://www.saucedemo.com/");
   }
 
   public void inputUsername(String username) {
@@ -24,5 +30,9 @@ public class LoginPage {
 
   public void clickLoginButton() {
     driver.findElement(loginButton).click();
+  }
+
+  public void validateErrorAppear(String errorMessage) {
+    assertTrue(driver.getPageSource().contains(errorMessage));
   }
 }
