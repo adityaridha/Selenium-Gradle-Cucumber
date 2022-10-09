@@ -15,3 +15,4 @@ Feature: Login
     And user input username with "standard_user"
     And user input password with "invalid"
     When user click login button
+    Then user able to see error message "Epic sadface: Username and password do not match any user in this service"
