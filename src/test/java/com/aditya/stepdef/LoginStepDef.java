@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
 
 public class LoginStepDef extends BaseTest {
 
-  protected LoginPage loginPage;
+  LoginPage loginPage;
 
   @Given("user is on login page")
   public void userIsOnLoginPage() {
